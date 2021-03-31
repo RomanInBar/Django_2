@@ -11,4 +11,5 @@ urlpatterns = [
     path("logout/", userapp.logout, name="logout"),
     path("register/", userapp.register, name="register"),
     path("edit/", userapp.edit, name="edit"),
+    path('verify/<email>/<activation_key>/', userapp.verify, name='verify'),
 ]

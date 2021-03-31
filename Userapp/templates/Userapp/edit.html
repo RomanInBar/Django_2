@@ -5,7 +5,7 @@
 
 
 
-<form class="form-horizontal" action="{% url 'user:edit' %}" method="POST" enctype="multipart/form-data">
+<form class="form-horizontal" method="POST" action="{% url 'user:edit' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{edit_form.as_p}}
     <input type="submit" class="form-control" value="сохранить">
