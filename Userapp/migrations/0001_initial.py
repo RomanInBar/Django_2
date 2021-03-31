@@ -10,31 +10,15 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ("auth", "0011_update_proxy_permissions"),
-    ]
+    dependencies = [("auth", "0011_update_proxy_permissions")]
 
     operations = [
         migrations.CreateModel(
             name="ShopUser",
             fields=[
-                (
-                    "id",
-                    models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                (
-                    "password",
-                    models.CharField(max_length=128, verbose_name="password"),
-                ),
-                (
-                    "last_login",
-                    models.DateTimeField(blank=True, null=True, verbose_name="last login"),
-                ),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("password", models.CharField(max_length=128, verbose_name="password")),
+                ("last_login", models.DateTimeField(blank=True, null=True, verbose_name="last login")),
                 (
                     "is_superuser",
                     models.BooleanField(
@@ -54,18 +38,9 @@ class Migration(migrations.Migration):
                         verbose_name="username",
                     ),
                 ),
-                (
-                    "first_name",
-                    models.CharField(blank=True, max_length=30, verbose_name="first name"),
-                ),
-                (
-                    "last_name",
-                    models.CharField(blank=True, max_length=150, verbose_name="last name"),
-                ),
-                (
-                    "email",
-                    models.EmailField(blank=True, max_length=254, verbose_name="email address"),
-                ),
+                ("first_name", models.CharField(blank=True, max_length=30, verbose_name="first name")),
+                ("last_name", models.CharField(blank=True, max_length=150, verbose_name="last name")),
+                ("email", models.EmailField(blank=True, max_length=254, verbose_name="email address")),
                 (
                     "is_staff",
                     models.BooleanField(
@@ -82,17 +57,8 @@ class Migration(migrations.Migration):
                         verbose_name="active",
                     ),
                 ),
-                (
-                    "date_joined",
-                    models.DateTimeField(
-                        default=django.utils.timezone.now,
-                        verbose_name="date joined",
-                    ),
-                ),
-                (
-                    "avatar",
-                    models.ImageField(blank=True, upload_to="users_avatars"),
-                ),
+                ("date_joined", models.DateTimeField(default=django.utils.timezone.now, verbose_name="date joined")),
+                ("avatar", models.ImageField(blank=True, upload_to="users_avatars")),
                 ("age", models.PositiveIntegerField(verbose_name="возраст")),
                 (
                     "groups",
@@ -117,13 +83,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "verbose_name": "user",
-                "verbose_name_plural": "users",
-                "abstract": False,
-            },
-            managers=[
-                ("objects", django.contrib.auth.models.UserManager()),
-            ],
-        ),
+            options={"verbose_name": "user", "verbose_name_plural": "users", "abstract": False},
+            managers=[("objects", django.contrib.auth.models.UserManager())],
+        )
     ]
