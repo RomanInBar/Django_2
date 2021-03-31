@@ -8,6 +8,7 @@
     {% csrf_token %}
     {{ register_form.as_p }}
     <br>
-    <input class="form-control" type="submit" value="зарегистрироваться">
+    <input class="form-control" type="submit" value="зарегистрироваться"> 
+    {{ error }}     
 </form>
 {% endblock content %}

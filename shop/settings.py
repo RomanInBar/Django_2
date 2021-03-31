@@ -136,11 +136,11 @@ LOGIN_URL = "Userapp:login"
 
 DOMAIN_NAME = 'http://localhost:8000'
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = '25'
-EMAIL_HOST_USER = 'django@geekshop.local'
-EMAIL_HOST_PASSWORD = 'geekshop'
-EMAIL_USE_SSL = False
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'bb98f0ec485e09'
+EMAIL_HOST_PASSWORD = 'ca24c61cc05d16'
+EMAIL_PORT = '2525'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'tmp/email-messages/' 

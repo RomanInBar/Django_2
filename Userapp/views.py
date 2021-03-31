@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib import auth
-from django.shortcuts import HttpResponseRedirect, render
+from django.shortcuts import HttpResponseRedirect, render, HttpResponse
 from django.urls import reverse
 from django.core.mail import send_mail
 
@@ -66,9 +66,9 @@ def logout(request):
 
 def register(request):
     title = "регистрация"
-
+    error = ''
     if request.method == "POST":
-        register_form = ShopUserRegisterForm(request.POST, request.FILES)
+        register_form = ShopUserRegisterForm(request.POST, request.FILES)      
         if register_form.is_valid():
             user = register_form.save()
             if send_verify_mail(user):
@@ -77,8 +77,10 @@ def register(request):
             else:
                 print("ошибка отправки сообщения")
                 return HttpResponseRedirect(reverse("user:login"))
+        else:
+            error = 'Error, not valid form'   
     register_form = ShopUserRegisterForm()
-    content = {"title": title, "register_form": register_form}
+    content = {"title": title, "register_form": register_form, 'error': error}
     return render(request, "Userapp/register.html", content)
 
 
