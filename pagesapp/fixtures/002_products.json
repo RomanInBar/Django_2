@@ -1,0 +1,134 @@
+
+[
+    {
+        "model":"pagesapp.product",
+        "pk":1,
+        "fields":{
+            "category":1,
+            "name":"комфорт 1",
+            "image":"products_images/product-1.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"3299",
+            "quantity":17
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":2,
+        "fields":{
+            "category":1,
+            "name":"комфорт 2",
+            "image":"products_images/product-2.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"4500",
+            "quantity":10
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":3,
+        "fields":{
+            "category":2,
+            "name":"комфорт 3",
+            "image":"products_images/product-3.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"1500",
+            "quantity":31
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":4,
+        "fields":{
+            "category":2,
+            "name":"комфорт 4",
+            "image":"products_images/product-4.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"2290",
+            "quantity":18
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":5,
+        "fields":{
+            "category":3,
+            "name":"комфорт 5",
+            "image":"products_images/product-5.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"9699",
+            "quantity":7
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":6,
+        "fields":{
+            "category":3,
+            "name":"комфорт 6",
+            "image":"products_images/product-6.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"5499",
+            "quantity":27
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":7,
+        "fields":{
+            "category":4,
+            "name":"комфорт 7",
+            "image":"products_images/product-7.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"499",
+            "quantity":63
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":8,
+        "fields":{
+            "category":4,
+            "name":"комфорт 8",
+            "image":"products_images/product-8.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"1499",
+            "quantity":46
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":9,
+        "fields":{
+            "category":5,
+            "name":"комфорт 9",
+            "image":"products_images/product-9.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"4390",
+            "quantity":38
+        }
+    },
+    {
+        "model":"pagesapp.product",
+        "pk":10,
+        "fields":{
+            "category":5,
+            "name":"комфорт 10",
+            "image":"products_images/product-10.jpg",
+            "short_desc":"комфортный стул",
+            "description":"подойдет для просмотра фильмов",
+            "price":"10599",
+            "quantity":8
+        }
+    }
+
+]

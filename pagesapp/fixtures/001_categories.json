@@ -1,0 +1,43 @@
+
+[
+    {
+        "model":"pagesapp.productcategory",
+        "pk": 1,
+        "fields":{
+            "name":"дом",
+            "description":"Мебель для домашнего интерьера"
+        }
+    },
+    {
+        "model":"pagesapp.productcategory",
+        "pk": 2,
+        "fields":{
+            "name":"офис",
+            "description":"Мебель для офиса"
+        }
+    },
+    {
+        "model":"pagesapp.productcategory",
+        "pk": 3,
+        "fields":{
+            "name":"модерн",
+            "description":"Мебель в стиле 'Модерн' "
+        }
+    },
+    {
+        "model":"pagesapp.productcategory",
+        "pk": 4,
+        "fields":{
+            "name":"классика",
+            "description":"Классическая мебель."
+        }
+    },
+    {
+        "model":"pagesapp.productcategory",
+        "pk": 5,
+        "fields":{
+            "name":"бизнес",
+            "description":"Мебель бизнес класса."
+        }
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "model":"pagesapp.contact",
+        "pk":1,
+        "fields":{
+            "phone":"777-77-77",
+            "email":"info@mail.ru",
+            "city":"Москва",
+            "address":"В пределах МКАД"
+        }
+    },
+    {
+
+        "model":"pagesapp.contact",
+        "pk":1,
+        "fields":{
+            "phone":"766-66-66",
+            "email":"infoPr@mail.ru",
+            "city":"Петербург",
+            "address":"Васильевский остров"
+        }
+    },
+    {
+
+        "model":"pagesapp.contact",
+        "pk":1,
+        "fields":{
+            "phone":"755-55-55",
+            "email":"infoTr@mail.ru",
+            "city":"Тверь",
+            "address":"Садовая 22/1"
+        }
+    }
+]

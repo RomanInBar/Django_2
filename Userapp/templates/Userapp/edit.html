@@ -1,0 +1,21 @@
+{% extends 'Userapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+
+<form class="form-horizontal" action="{% url 'user:edit' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{edit_form.as_p}}
+    <input type="submit" class="form-control" value="сохранить">
+</form>
+<button class="btn btn-round form-control last">
+    <a href="{% url 'main' %}" class="">на главную</a>
+</button>
+
+{% if user.avatar %}
+<div class="user-avatar"><img src="{{media_url}}{{user_avatar}}"></div>
+{% endif %}
+
+{% endblock content %}
