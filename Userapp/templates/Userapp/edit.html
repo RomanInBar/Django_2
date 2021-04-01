@@ -10,9 +10,8 @@
     {{edit_form.as_p}}
     <input type="submit" class="form-control" value="сохранить">
 </form>
-<button class="btn btn-round form-control last">
-    <a href="{% url 'main' %}" class="">на главную</a>
-</button>
+
+    <a href="{% url 'main' %}" class="btn btn-round form-control last btn-block" role="button">на главную</a>
 
 {% if user.avatar %}
 <div class="user-avatar"><img src="{{media_url}}{{user_avatar}}"></div>
