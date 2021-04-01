@@ -3,8 +3,10 @@ from django.contrib import auth
 from django.shortcuts import HttpResponseRedirect, render, HttpResponse
 from django.urls import reverse
 from django.core.mail import send_mail
+from django.db import transaction
 
-from Userapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserRegisterForm
+
+from Userapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserRegisterForm, ShopUserProfileEditForm
 
 from Userapp.models import ShopUser
 
@@ -84,15 +86,23 @@ def register(request):
     return render(request, "Userapp/register.html", content)
 
 
+@transaction.atomic
 def edit(request):
-    title = "редактировать"
+    title = 'редактирование'
 
-    if request.method == "POST":
+    if request.method == 'POST':
         edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
-        if edit_form.is_valid():
+        profile_form = ShopUserProfileEditForm(request.POST, instance=request.user.shopuserprofile)
+        if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
-            return HttpResponseRedirect(reverse("user:edit"))
-
-    edit_form = ShopUserEditForm(instance=request.user)
-    content = {"title": title, "edit_form": edit_form, "media_url": settings.MEDIA_URL}
-    return render(request, "Userapp/edit.html", content)
+            return HttpResponseRedirect(reverse('user:edit'))
+    else:
+        edit_form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
+    content = {
+        'title': title,
+        'edit_form:': edit_form,
+        'profile_form': profile_form,
+    }
+    return render(request, 'Userapp/edit.html', content)
+    

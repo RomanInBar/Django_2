@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm, UserChangeForm, UserCreationForm
-
-from .models import ShopUser
+from django import forms
+from .models import ShopUser, ShopUserProfile
 import random, hashlib
 
 
@@ -59,3 +59,25 @@ class ShopUserEditForm(UserChangeForm):
     class Meta:
         model = ShopUser
         fields = ("username", "first_name", "email", "age", "avatar")
+
+
+
+class ShopUserProfileEditForm(forms.ModelForm):
+    """Form definition for ShopUserProfileEdit."""
+
+    class Meta:
+        """Meta definition for ShopUserProfileEditform."""
+
+        model = ShopUserProfile
+        fields = (
+            'tagline',
+            'aboutMe',
+            'gender',
+            )
+
+        def __init__(self, *args, **kwargs):
+            super(ShopUserProfileEditForm, self).__init__(*args, **kwargs)
+            for field_name, field in self.fields.items():
+                field.widget.attrs['class'] = 'form-control'
+        
+
