@@ -4,20 +4,22 @@ from django.db import transaction
 from django.forms import inlineformset_factory
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from basketapp.models import Basket
 from ordersapp.models import OrderItem, Order
 from ordersapp.forms import OrderItemForm
 
 
-class OrderList(ListView):
+
+class OrderList(LoginRequiredMixin, ListView):
     model = Order
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
 
 
-class OrderItemsCreate(CreateView):
+class OrderItemsCreate(LoginRequiredMixin, CreateView):
     model = Order
     fields = []
     success_url = reverse_lazy('ordersapp:orders_list')
@@ -33,7 +35,7 @@ class OrderItemsCreate(CreateView):
         if self.request == 'POST':
             formset = OrderFormSet(self.request.POST)
         else:
-            basket_items = Basket.get_items(self.request.user)
+            basket_items = Basket.objects.filter(user=self.request.user)
             if len(basket_items):
                 OrderFormSet = inlineformset_factory(
                     Order,
@@ -69,7 +71,7 @@ class OrderItemsCreate(CreateView):
         return super(OrderItemsCreate, self).form_valid(form)
 
 
-class OrderItemsUpdate(UpdateView):
+class OrderItemsUpdate(LoginRequiredMixin, UpdateView):
     model = Order
     fields = []
     success_url = reverse_lazy('ordersapp:orders_list')
@@ -120,11 +122,11 @@ class OrderItemsUpdate(UpdateView):
         return super(OrderItemsUpdate, self).form_valid(form)
 
 
-class OrderDelete(DeleteView):
+class OrderDelete(LoginRequiredMixin, DeleteView):
     model = Order
-    success_url = reverse_lazy('ordersapp:order_list')
+    success_url = reverse_lazy('ordersapp:orders_list')
 
-class OrderRead(DetailView):
+class OrderRead(LoginRequiredMixin ,DetailView):
     model = Order
 
     def get_context_data(self, **kwargs):

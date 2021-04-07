@@ -5,11 +5,11 @@ from .apps import OrdersappConfig
 app_name = OrdersappConfig.name
 
 urlpatterns = [
-    path('', ordersapp.OrderList.as_view(), name='order_list'),
-    path('forming/complete', ordersapp.order_forming_complete,
+    path('', ordersapp.OrderList.as_view(), name='orders_list'),
+    path('forming/complete/<int:pk>', ordersapp.order_forming_complete,
          name='order_forming_complete'),
     path('create/', ordersapp.OrderItemsCreate.as_view(), name='order_create'),
-    path('read/', ordersapp.OrderRead.as_view(), name='order_read'),
-    path('update/', ordersapp.OrderItemsUpdate.as_view(), name='order_update'),
-    path('delete/', ordersapp.OrderDelete.as_view(), name='order_delete'),
+    path('read/<int:pk>/', ordersapp.OrderRead.as_view(), name='order_read'),
+    path('update/<int:pk>/', ordersapp.OrderItemsUpdate.as_view(), name='order_update'),
+    path('delete/<int:pk>/', ordersapp.OrderDelete.as_view(), name='order_delete'),
 ]
