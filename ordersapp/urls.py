@@ -1,5 +1,7 @@
-import ordersapp.views as ordersapp
 from django.urls import path
+
+import ordersapp.views as ordersapp
+
 from .apps import OrdersappConfig
 
 app_name = OrdersappConfig.name

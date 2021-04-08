@@ -5,7 +5,9 @@ from urllib.parse import urlencode, urlunparse
 import requests
 from django.utils import timezone
 from social_core.exceptions import AuthForbidden
+
 from Userapp.models import ShopUserProfile
+
 
 def save_user_profile(backend, user, response, *args, **kwargs):
     if backend.name != 'vk-oauth2':

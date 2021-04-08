@@ -1,5 +1,5 @@
 {% extends 'ordersapp/base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block content %}
@@ -22,7 +22,7 @@
     </thead>
     <tbody>
         {% for item in object_list %}
-        {% if item.is_active %}
+        {% if item.active %}
         <tr>
             <td class="td1 orders_list">{{ item.pk }}</td>
             <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
@@ -57,7 +57,7 @@
         на главную
     </a>
 </button>
-<button class="btn btn-default btn-round">
+<button class="btn btn-default btn-round" >
     <a href="{% url 'ordersapp:order_create' %}">
         новый
     </a>

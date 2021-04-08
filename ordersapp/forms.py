@@ -1,5 +1,7 @@
 from django import forms
+
 from ordersapp.models import Order, OrderItem
+
 
 class OrderForm(forms.ModelForm):
     class Meta:
@@ -22,5 +24,3 @@ class OrderItemForm(forms.ModelForm):
         super(OrderItemForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-
-    

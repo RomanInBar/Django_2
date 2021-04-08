@@ -1,8 +1,8 @@
 from django import forms
 
+from pagesapp.models import Product, ProductCategory
 from Userapp.forms import ShopUserEditForm
 from Userapp.models import ShopUser
-from pagesapp.models import Product, ProductCategory
 
 
 class ShopUserAdminEditForm(ShopUserEditForm):

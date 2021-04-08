@@ -1,5 +1,5 @@
 {% extends "ordersapp/base.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block content %}
    {% include 'ordersapp/includes/inc_order_summary.html' %}
@@ -36,7 +36,7 @@
                    </tr>
                {% endfor %}
            </table>
-           <button type="submit" value="сохранить" class="btn btn-default btn-round form-control last">сохранить</button>
+           <button type="submit" value="сохранить" class="my-button btn btn-round form-control last">сохранить</button>
            {% include 'ordersapp/includes/inc_order_actions.html' %}
        </form>
    </div>

@@ -1,13 +1,12 @@
 from django.conf import settings
 from django.contrib import auth
-from django.shortcuts import HttpResponseRedirect, render, HttpResponse
-from django.urls import reverse
 from django.core.mail import send_mail
 from django.db import transaction
+from django.shortcuts import HttpResponse, HttpResponseRedirect, render
+from django.urls import reverse
 
-
-from Userapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserRegisterForm, ShopUserProfileEditForm
-
+from Userapp.forms import (ShopUserEditForm, ShopUserLoginForm,
+                           ShopUserProfileEditForm, ShopUserRegisterForm)
 from Userapp.models import ShopUser
 
 
@@ -105,4 +104,3 @@ def edit(request):
         'profile_form': profile_form,
     }
     return render(request, 'Userapp/edit.html', content)
-    

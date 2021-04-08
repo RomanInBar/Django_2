@@ -1,15 +1,14 @@
-from django.shortcuts import get_object_or_404, HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.forms import inlineformset_factory
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.shortcuts import HttpResponseRedirect, get_object_or_404
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django.views.generic.detail import DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 from basketapp.models import Basket
-from ordersapp.models import OrderItem, Order
 from ordersapp.forms import OrderItemForm
-
+from ordersapp.models import Order, OrderItem
 
 
 class OrderList(LoginRequiredMixin, ListView):
@@ -74,6 +73,7 @@ class OrderItemsCreate(LoginRequiredMixin, CreateView):
 class OrderItemsUpdate(LoginRequiredMixin, UpdateView):
     model = Order
     fields = []
+    context_object_name = 'objects'
     success_url = reverse_lazy('ordersapp:orders_list')
 
     def get_context_data(self, **kwargs):
@@ -87,23 +87,13 @@ class OrderItemsUpdate(LoginRequiredMixin, UpdateView):
         if self.request == 'POST':
             data['orderitems'] = OrderFormSet(self.request.POST, instance=self.object)
         else:
-            data['orderitems'] = OrderFormSet(instance=self.object)
-            if len(basket_items):
-                OrderFormSet = inlineformset_factory(
-                    Order,
-                    OrderItem,
-                    form=OrderItemForm,
-                    extra=len(basket_items)
-                )
+            formset = OrderFormSet(instance=self.object)
 
-                formset = OrderFormSet(instance=self.object)
-                for num, form in enumerate(formset.forms):
-                    form.initial['product'] = basket_items[num].product
-                    form.initial['quantity'] = basket_items[num].quantity
-                basket_items.delete()
-            else:
-                formset = OrderFormSet()
-        data['orderitems'] = formset
+            data['orderitems'] = formset
+            for form in formset:
+                if form.instance.pk:
+                    form.initial['price'] = form.instance.product.price
+            
         return data
 
     def form_valid(self, form):
@@ -133,6 +123,7 @@ class OrderRead(LoginRequiredMixin ,DetailView):
         context = super(OrderRead, self).get_context_data(**kwargs)
         context['title'] = 'заказ/просмотр'
         return context
+
 
 def order_forming_complete(request, pk):
     order = get_object_or_404(Order, pk=pk)

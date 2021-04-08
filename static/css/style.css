@@ -1286,6 +1286,7 @@ body {
 
 table {
     width: 100%;
+    margin-top: 50px;
 }
 
 td:first-child {
@@ -1823,4 +1824,20 @@ td:first-child {
 
 .dropdown:hover .my-dropdown-menu{
     display: block;
+}
+
+.order_container{
+    margin: auto;
+    width: 1000px;
+    padding-top: 50px;
+}
+
+.my-button{
+    color: brown;
+}
+
+.my-button:hover{
+    background-color: #46e461;
+    border-color: #95c1fb;
+
 }
