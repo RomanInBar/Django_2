@@ -12,6 +12,7 @@ body {
 html,
 body {
     height: 100%;
+    background-color: aliceblue;
 }
 
 .product_read {
@@ -1209,7 +1210,7 @@ body {
 .footer {
     height: 384px;
     width: 1169px;
-    background-color: #f7f7f7;
+    background-color:#c6c5f7;
     padding-left: 99px;
     padding-right: 98px;
     margin: -384px auto 0;
@@ -1382,7 +1383,7 @@ td:first-child {
 }
 
 .hero {
-    background-color: #f5f5f5;
+    background-color: #c6c5f7;
     height: 360px;
     padding-left: 98px;
     padding-right: 211px;
@@ -1550,7 +1551,7 @@ td:first-child {
 }
 
 .hero-white {
-    background-color: #fff;
+    background-color: #c6c5f7;
     height: 119px;
     padding-left: 98px;
     padding-right: 211px;
@@ -1559,7 +1560,7 @@ td:first-child {
 
 .links {
     height: 70px;
-    background-color: #f4f4f4;
+    background-color: #ded1ff;
     position: relative;
     padding-left: 360px;
 }
@@ -1840,4 +1841,8 @@ td:first-child {
     background-color: #46e461;
     border-color: #95c1fb;
 
+}
+
+.blue-button{
+    color: #204bca;
 }

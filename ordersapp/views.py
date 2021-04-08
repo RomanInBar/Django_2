@@ -4,6 +4,8 @@ from django.forms import inlineformset_factory
 from django.shortcuts import HttpResponseRedirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.dispatch import receiver
+from django.db.models.signals import pre_save, pre_delete
 from django.views.generic.detail import DetailView
 
 from basketapp.models import Basket
@@ -47,6 +49,7 @@ class OrderItemsCreate(LoginRequiredMixin, CreateView):
                 for num, form in enumerate(formset.forms):
                     form.initial['product'] = basket_items[num].product
                     form.initial['quantity'] = basket_items[num].quantity
+                    form.initial['price'] = basket_items[num].product.price
                 basket_items.delete()
             else:
                 formset = OrderFormSet()
@@ -85,15 +88,15 @@ class OrderItemsUpdate(LoginRequiredMixin, UpdateView):
             extra=1,
         )
         if self.request == 'POST':
-            data['orderitems'] = OrderFormSet(self.request.POST, instance=self.object)
+            data['orderitems'] = OrderFormSet(
+                self.request.POST, instance=self.object)
         else:
             formset = OrderFormSet(instance=self.object)
-
-            data['orderitems'] = formset
-            for form in formset:
+          
+            for form in formset.forms:
                 if form.instance.pk:
                     form.initial['price'] = form.instance.product.price
-            
+            data['orderitems'] = formset
         return data
 
     def form_valid(self, form):
@@ -116,7 +119,8 @@ class OrderDelete(LoginRequiredMixin, DeleteView):
     model = Order
     success_url = reverse_lazy('ordersapp:orders_list')
 
-class OrderRead(LoginRequiredMixin ,DetailView):
+
+class OrderRead(LoginRequiredMixin, DetailView):
     model = Order
 
     def get_context_data(self, **kwargs):
@@ -130,3 +134,21 @@ def order_forming_complete(request, pk):
     order.status = Order.SENT_TO_PROCEED
     order.save()
     return HttpResponseRedirect(reverse('ordersapp:orders_list'))
+
+
+@receiver(pre_save, sender=OrderItem)
+@receiver(pre_save, sender=Basket)
+def product_quantity_update_save(sender, update_fields, instance, **kwargs):
+    if update_fields == 'quantity' or 'product':
+        if instance.pk:
+            instance.product.quantity -= instance.quantity - \
+                sender.get_item(instance.pk).quantity
+        else:
+            instance.product.quantity -= instance.quantity
+        instance.product.save()
+
+@receiver(pre_delete, sender=OrderItem)
+@receiver(pre_delete, sender=Basket)
+def product_quantity_update_delete(sender, instance, **kwargs):
+    instance.product.quantity += instance.quantity
+    instance.product.save()

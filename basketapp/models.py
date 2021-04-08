@@ -34,24 +34,4 @@ class Basket(models.Model):
         return Basket.objects.filter(pk=pk).first()
 
 
-class BasketQuerySet(models.QuerySet):
-    def delete(self, *args, **kwargs):
-        for object in self:
-            object.product.quantity += self.quantity
-            object.product.save()
-            super(BasketQuerySet, self).delete(*args, **kwargs)
 
-
-@receiver(pre_save, sender=Basket)
-def product_quantity_update_save(sender, update_fields, instance, **kwargs):
-    if update_fields == 'quantity' or 'product':
-        if instance.pk:
-            instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
-        else:
-            instance.product.quantity -= instance.quantity
-        instance.product.save()
-
-@receiver(pre_delete, sender=Basket)
-def product_quantity_update_delete(sender, instance, **kwargs):
-    instance.product.quantity += instance.quantity
-    instance.product.save()
