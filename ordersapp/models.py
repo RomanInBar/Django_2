@@ -4,6 +4,7 @@ from django.db.models.signals import pre_delete, pre_save
 from django.dispatch import receiver
 
 from pagesapp.models import Product
+from basketapp.models import Basket
 
 
 class Order(models.Model):

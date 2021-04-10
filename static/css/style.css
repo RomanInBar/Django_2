@@ -1821,11 +1821,18 @@ td:first-child {
     display: none;
     position: absolute;
     padding-top: 20px;
+    
 }
 
 .dropdown:hover .my-dropdown-menu{
     display: block;
+    z-index: 1;
+    background-color: aliceblue;
+    width: 150px;
+    border-radius: 20px;
+    padding-bottom: 19px;
 }
+
 
 .order_container{
     margin: auto;
