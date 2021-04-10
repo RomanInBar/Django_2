@@ -1,5 +1,5 @@
 window.onload = function () {
-    var _quantity, _price, orderitem_num, delta_quantity, orderitem_quantity, delta_cost;
+    var _quantity, _price, orderitem_num, delta_quantity, orderitem_quantity, delta_cost, _row;
     var quantity_arr = [];
     var price_arr = [];
 
@@ -25,23 +25,15 @@ window.onload = function () {
     $('.order_form').on('click', 'input[type=number]', function(){
         var target = event.target;
         orderitem_num = parseInt(target.name.replace('orderitems-', '').replace('-quantity', ''));
+        if (target.value == 0){
+            target.parentElement.parentElement.style.display = 'none';
+        }
         if(price_arr[orderitem_num]){
             orderitem_quantity = parseInt(target.value);
             delta_quantity = orderitem_quantity - quantity_arr[orderitem_num];
             quantity_arr[orderitem_num] = orderitem_quantity;
             orderSummaryUpdate(price_arr[orderitem_num], delta_quantity);
         }
-    });
-
-    $('.order_form').on('click', 'input[type=checkbox]', function(){
-        var target = event.target;
-        orderitem_num = parseInt(target.name.replace('orderitems-', '').replace('-quantity', ''));
-        if(target.checked){
-            delta_quantity = -quantity_arr[orderitem_num];
-        } else {
-            delta_quantity = quantity_arr[orderitem_num];
-        }
-        orderSummaryUpdate(price_arr[orderitem_num], delta_quantity);
     });
 
         function orderSummaryUpdate(orderitem_price, delta_quantity){
