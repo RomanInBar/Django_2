@@ -648,26 +648,6 @@
         }
     },
     {
-        "model": "sessions.session",
-        "pk": "eiol120wvplhuel05tcm6wft4wddm62v",
-        "fields": {
-            "session_data": ".eJxVj0FrwkAQhf_Lnts03ck22d6qiIKCpwr2sszuTExITFJ3DYL0v7spUur1e3zvzVxFx5cg3sWLeBJj89zjOVTS-ICBI13bhZqN-zrdrlz7taflJjuGT5eHzbD8ng9DlMxkmLPnk6kpKvKRWXQNd1Pge1dja1x_4uROfTI2yW69_ZhGH70KfRUlDaQ4dYA614rISsBXKiEjwDfSuQSdklMaCsUEYKUqrM1lpkoo0pKBY-l997e6RR9M2x_q7t9hf2-LnxuIoVlB:1lUWys:SFP-_YlpDdvxIyLynaXwNLx71VtPJCF1WHeT4NX6xCc",
-            "expire_date": "2021-04-22T15:54:06.483Z"
-        }
-    },
-    {
-        "model": "social_django.usersocialauth",
-        "pk": 1,
-        "fields": {
-            "user": 2,
-            "provider": "vk-oauth2",
-            "uid": "576185039",
-            "extra_data": "{\"auth_time\": 1617897246, \"id\": 576185039, \"expires\": 86400, \"access_token\": \"c365ca8849e40e5f1600ff4c57fae38063d190fa7360354ec823307fcc30d3fcbc4a8fa48ebdfc6ecd74b\", \"token_type\": null}",
-            "created": "2021-04-08T15:54:06.433Z",
-            "modified": "2021-04-08T15:54:06.438Z"
-        }
-    },
-    {
         "model": "pagesapp.productcategory",
         "pk": 1,
         "fields": {
@@ -722,7 +702,7 @@
             "short_desc": "комфортный стул",
             "description": "подойдет для просмотра фильмов",
             "price": "3299.00",
-            "quantity": 15,
+            "quantity": 17,
             "is_active": true
         }
     },
@@ -736,7 +716,7 @@
             "short_desc": "комфортный стул",
             "description": "подойдет для просмотра фильмов",
             "price": "4500.00",
-            "quantity": 9,
+            "quantity": 10,
             "is_active": true
         }
     },
@@ -750,7 +730,7 @@
             "short_desc": "комфортный стул",
             "description": "подойдет для просмотра фильмов",
             "price": "500.00",
-            "quantity": 30,
+            "quantity": 31,
             "is_active": true
         }
     },
@@ -764,7 +744,7 @@
             "short_desc": "комфортный стул",
             "description": "подойдет для просмотра фильмов",
             "price": "2290.00",
-            "quantity": 17,
+            "quantity": 18,
             "is_active": true
         }
     },
@@ -806,7 +786,7 @@
             "short_desc": "комфортный стул",
             "description": "подойдет для просмотра фильмов",
             "price": "499.00",
-            "quantity": 59,
+            "quantity": 63,
             "is_active": true
         }
     },
@@ -820,7 +800,7 @@
             "short_desc": "комфортный стул",
             "description": "подойдет для просмотра фильмов",
             "price": "1499.00",
-            "quantity": 40,
+            "quantity": 46,
             "is_active": true
         }
     },
@@ -834,7 +814,7 @@
             "short_desc": "комфортный стул",
             "description": "подойдет для просмотра фильмов",
             "price": "4390.00",
-            "quantity": 36,
+            "quantity": 38,
             "is_active": true
         }
     },
@@ -880,173 +860,6 @@
             "email": "infoTr@mail.ru",
             "city": "Тверь",
             "address": "Садовая 22/1"
-        }
-    },
-    {
-        "model": "Userapp.shopuser",
-        "pk": 1,
-        "fields": {
-            "password": "pbkdf2_sha256$150000$Poyfal2RNsKa$AAnI/z9WprCunEwku4YKvIU9lJAVNsQ//rH2K9Qy2YY=",
-            "last_login": "2020-10-09T10:32:18.075Z",
-            "is_superuser": true,
-            "username": "admin",
-            "first_name": "Roman",
-            "last_name": "",
-            "email": "root@ya.ru",
-            "is_staff": true,
-            "is_active": true,
-            "date_joined": "2020-10-09T10:30:10.234Z",
-            "avatar": "",
-            "age": 27,
-            "activation_key": "",
-            "activation_key_expires": "2021-04-10T15:53:56.253Z",
-            "groups": [],
-            "user_permissions": []
-        }
-    },
-    {
-        "model": "Userapp.shopuser",
-        "pk": 2,
-        "fields": {
-            "password": "!nxjASuLKHM13Qi1Cazg9H4Bq0QgREYYtLa7bIoEl",
-            "last_login": "2021-04-08T15:54:06.470Z",
-            "is_superuser": false,
-            "username": "id576185039",
-            "first_name": "Роман",
-            "last_name": "Барабин",
-            "email": "",
-            "is_staff": false,
-            "is_active": true,
-            "date_joined": "2021-04-08T15:54:06.312Z",
-            "avatar": "",
-            "age": 18,
-            "activation_key": "",
-            "activation_key_expires": "2021-04-10T15:53:37.644Z",
-            "groups": [],
-            "user_permissions": []
-        }
-    },
-    {
-        "model": "ordersapp.order",
-        "pk": 4,
-        "fields": {
-            "user": 2,
-            "created": "2021-04-09T15:09:28.379Z",
-            "updated": "2021-04-09T15:14:48.802Z",
-            "status": "STP",
-            "active": true
-        }
-    },
-    {
-        "model": "ordersapp.order",
-        "pk": 18,
-        "fields": {
-            "user": 2,
-            "created": "2021-04-09T17:52:30.406Z",
-            "updated": "2021-04-09T18:04:50.791Z",
-            "status": "STP",
-            "active": true
-        }
-    },
-    {
-        "model": "ordersapp.order",
-        "pk": 21,
-        "fields": {
-            "user": 2,
-            "created": "2021-04-10T11:02:37.985Z",
-            "updated": "2021-04-10T11:02:38.024Z",
-            "status": "FM",
-            "active": true
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 9,
-        "fields": {
-            "order": 18,
-            "product": 3,
-            "quantity": 1
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 10,
-        "fields": {
-            "order": 18,
-            "product": 1,
-            "quantity": 1
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 11,
-        "fields": {
-            "order": 18,
-            "product": 8,
-            "quantity": 2
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 12,
-        "fields": {
-            "order": 18,
-            "product": 7,
-            "quantity": 3
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 13,
-        "fields": {
-            "order": 18,
-            "product": 2,
-            "quantity": 1
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 17,
-        "fields": {
-            "order": 21,
-            "product": 1,
-            "quantity": 1
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 18,
-        "fields": {
-            "order": 21,
-            "product": 9,
-            "quantity": 2
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 19,
-        "fields": {
-            "order": 21,
-            "product": 7,
-            "quantity": 1
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 20,
-        "fields": {
-            "order": 21,
-            "product": 8,
-            "quantity": 4
-        }
-    },
-    {
-        "model": "ordersapp.orderitem",
-        "pk": 21,
-        "fields": {
-            "order": 21,
-            "product": 4,
-            "quantity": 1
         }
     }
 ]
