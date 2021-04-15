@@ -217,3 +217,4 @@ fabric.properties
 # Local History for Visual Studio Code
 .history/
 /tmp
+/shop/vk.json
