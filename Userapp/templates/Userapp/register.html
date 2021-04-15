@@ -8,6 +8,8 @@
     {% csrf_token %}
     {{ register_form.as_p }}
     <br>
-    <input class="form-control" type="submit" value="зарегистрироваться">
+    <input class="form-control" type="submit" value="зарегистрироваться"> 
+    {{ error }}     
 </form>
+<a href="{% url 'main'%}" class="btn btn-round form-control btn-block" role="button">На главную</a>
 {% endblock content %}
