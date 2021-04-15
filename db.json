@@ -927,16 +927,6 @@
         }
     },
     {
-        "model": "Userapp.shopuserprofile",
-        "pk": 2,
-        "fields": {
-            "user": 2,
-            "tagline": "",
-            "aboutMe": "",
-            "gender": "M"
-        }
-    },
-    {
         "model": "ordersapp.order",
         "pk": 4,
         "fields": {
