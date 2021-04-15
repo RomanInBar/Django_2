@@ -928,16 +928,6 @@
     },
     {
         "model": "Userapp.shopuserprofile",
-        "pk": 1,
-        "fields": {
-            "user": 1,
-            "tagline": "",
-            "aboutMe": "",
-            "gender": ""
-        }
-    },
-    {
-        "model": "Userapp.shopuserprofile",
         "pk": 2,
         "fields": {
             "user": 2,
