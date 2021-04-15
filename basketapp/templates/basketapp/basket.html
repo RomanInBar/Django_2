@@ -1,5 +1,5 @@
 {% extends 'basketapp/base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block content %}
@@ -7,7 +7,7 @@
     {% include 'basketapp/includes/inc_basket_list.html' %}
 </div>
 <button class="btn btn-round">
-    <a href="{% url 'main' %}">
+    <a href="{% url 'main' %}" class="my-button btn btn-round form-control last">
         на главную
     </a>
 </button>

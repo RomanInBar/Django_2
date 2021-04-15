@@ -1,5 +1,7 @@
 from django import forms
+
 from ordersapp.models import Order, OrderItem
+
 
 class OrderForm(forms.ModelForm):
     class Meta:
@@ -13,6 +15,7 @@ class OrderForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
 class OrderItemForm(forms.ModelForm):
+    price=forms.CharField(label='цена', required=False)
     class Meta:
         model = OrderItem
         exclude = ()
@@ -21,6 +24,4 @@ class OrderItemForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(OrderItemForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
-
-    
+            field.widget.attrs['class'] = 'order_form'
