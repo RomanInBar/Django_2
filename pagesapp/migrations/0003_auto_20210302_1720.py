@@ -5,14 +5,6 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("pagesapp", "0002_product"),
-    ]
+    dependencies = [("pagesapp", "0002_product")]
 
-    operations = [
-        migrations.RenameField(
-            model_name="productcategory",
-            old_name="decription",
-            new_name="description",
-        ),
-    ]
+    operations = [migrations.RenameField(model_name="productcategory", old_name="decription", new_name="description")]

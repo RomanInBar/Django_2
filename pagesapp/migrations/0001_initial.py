@@ -13,23 +13,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="ProductCategory",
             fields=[
-                (
-                    "id",
-                    models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                (
-                    "name",
-                    models.CharField(max_length=64, unique=True, verbose_name="имя"),
-                ),
-                (
-                    "decription",
-                    models.TextField(blank=True, verbose_name="описание"),
-                ),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=64, unique=True, verbose_name="имя")),
+                ("decription", models.TextField(blank=True, verbose_name="описание")),
             ],
-        ),
+        )
     ]

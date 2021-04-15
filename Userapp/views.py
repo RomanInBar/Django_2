@@ -4,21 +4,19 @@ from django.shortcuts import HttpResponseRedirect, render
 from django.urls import reverse
 from django.core.mail import send_mail
 
-from Userapp.forms import (
-    ShopUserEditForm,
-    ShopUserLoginForm,
-    ShopUserRegisterForm,
-)
+from Userapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserRegisterForm
 
 from Userapp.models import ShopUser
 
+
 def send_verify_mail(user):
-    verify_link = reverse('user:verify', args=[user.email, user.activation_key])
-    title = f'Подтверждение учетной записи {user.username}'
-    message = f'Для подтверждения учетной записи {user.username} на портале \
-    {settings.DOMAIN_NAME} перейдите по ссылке: \n{settings.DOMAIN_NAME}{verify_link}'
-    
+    verify_link = reverse("user:verify", args=[user.email, user.activation_key])
+    title = f"Подтверждение учетной записи {user.username}"
+    message = f"Для подтверждения учетной записи {user.username} на портале \
+    {settings.DOMAIN_NAME} перейдите по ссылке: \n{settings.DOMAIN_NAME}{verify_link}"
+
     return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
+
 
 def verify(request, email, activation_key):
     try:
@@ -27,12 +25,12 @@ def verify(request, email, activation_key):
             user.is_active = True
             user.save()
             auth.login(request, user)
-            return render(request, 'Userapp/verification.html')
-        print(f'error activation user: {user}')
-        return render(request, 'Userapp/verification.html')
+            return render(request, "Userapp/verification.html")
+        print(f"error activation user: {user}")
+        return render(request, "Userapp/verification.html")
     except Exception as e:
-        print(f'error activation user: {e.args}')
-        return HttpResponseRedirect(reverse('main'))
+        print(f"error activation user: {e.args}")
+        return HttpResponseRedirect(reverse("main"))
 
 
 def login(request):
@@ -67,21 +65,21 @@ def logout(request):
 
 
 def register(request):
-    title = 'регистрация'
+    title = "регистрация"
 
-    if request.method == 'POST':
+    if request.method == "POST":
         register_form = ShopUserRegisterForm(request.POST, request.FILES)
         if register_form.is_valid():
             user = register_form.save()
             if send_verify_mail(user):
-                print('сообщение подтверждения отправлено')
-                return HttpResponseRedirect(reverse('user:login'))
+                print("сообщение подтверждения отправлено")
+                return HttpResponseRedirect(reverse("user:login"))
             else:
-                print('ошибка отправки сообщения')
-                return HttpResponseRedirect(reverse('user:login'))
+                print("ошибка отправки сообщения")
+                return HttpResponseRedirect(reverse("user:login"))
     register_form = ShopUserRegisterForm()
-    content = {'title': title, 'register_form': register_form}
-    return render(request, 'Userapp/register.html', content)
+    content = {"title": title, "register_form": register_form}
+    return render(request, "Userapp/register.html", content)
 
 
 def edit(request):
@@ -94,12 +92,5 @@ def edit(request):
             return HttpResponseRedirect(reverse("user:edit"))
 
     edit_form = ShopUserEditForm(instance=request.user)
-    content = {
-        "title": title,
-        "edit_form": edit_form,
-        "media_url": settings.MEDIA_URL,
-    }
+    content = {"title": title, "edit_form": edit_form, "media_url": settings.MEDIA_URL}
     return render(request, "Userapp/edit.html", content)
-
-
-

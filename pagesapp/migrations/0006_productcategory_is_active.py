@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('pagesapp', '0005_fill_db'),
-    ]
+    dependencies = [("pagesapp", "0005_fill_db")]
 
     operations = [
         migrations.AddField(
-            model_name='productcategory',
-            name='is_active',
-            field=models.BooleanField(default=True, verbose_name='категория активна'),
-        ),
+            model_name="productcategory",
+            name="is_active",
+            field=models.BooleanField(default=True, verbose_name="категория активна"),
+        )
     ]

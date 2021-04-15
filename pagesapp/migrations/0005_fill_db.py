@@ -78,11 +78,7 @@ def forwards_func(apps, schema_editor):
     )
     del pro_cat_obj
 
-    pro_cat_obj = pro_cat_model.objects.create(
-        pk=4,
-        name="классика",
-        description="Классическая мебель",
-    )
+    pro_cat_obj = pro_cat_model.objects.create(pk=4, name="классика", description="Классическая мебель")
     pro_model.objects.create(
         pk=7,
         category=pro_cat_obj,
@@ -105,11 +101,7 @@ def forwards_func(apps, schema_editor):
     )
     del pro_cat_obj
 
-    pro_cat_obj = pro_cat_model.objects.create(
-        pk=5,
-        name="бизнес",
-        description="Мебель бизнес класса",
-    )
+    pro_cat_obj = pro_cat_model.objects.create(pk=5, name="бизнес", description="Мебель бизнес класса")
     pro_model.objects.create(
         pk=9,
         category=pro_cat_obj,
@@ -132,27 +124,11 @@ def forwards_func(apps, schema_editor):
     )
     del pro_cat_obj
 
+    con_model.objects.create(pk=1, phone="777-77-77", email="info@mail.ru", city="Москва", address="В пределах МКАД")
     con_model.objects.create(
-        pk=1,
-        phone="777-77-77",
-        email="info@mail.ru",
-        city="Москва",
-        address="В пределах МКАД",
+        pk=2, phone="766-66-66", email="infoPr@mail.ru", city="Петербург", address="Васильевский остров"
     )
-    con_model.objects.create(
-        pk=2,
-        phone="766-66-66",
-        email="infoPr@mail.ru",
-        city="Петербург",
-        address="Васильевский остров",
-    )
-    con_model.objects.create(
-        pk=3,
-        phone="755-55-55",
-        email="infoTr@mail.ru",
-        city="Тверь",
-        address="Садовая 22/1",
-    )
+    con_model.objects.create(pk=3, phone="755-55-55", email="infoTr@mail.ru", city="Тверь", address="Садовая 22/1")
 
 
 def revers_func(apps, schema_editor):
@@ -165,8 +141,6 @@ def revers_func(apps, schema_editor):
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ("pagesapp", "0004_contact"),
-    ]
+    dependencies = [("pagesapp", "0004_contact")]
 
     operations = [migrations.RunPython(forwards_func, revers_func)]
