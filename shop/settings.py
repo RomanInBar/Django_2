@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "Userapp",
     "basketapp",
     "adminapp",
+    "ordersapp",
 ]
 
 AUTH_USER_MODEL = "Userapp.ShopUser"
@@ -87,6 +88,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "shop.wsgi.application"
 
 LOGIN_ERROR_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
 SOCIAL_AUTH_VK_OAUTH2_SKOPE = ['email']

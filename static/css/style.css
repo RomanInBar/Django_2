@@ -4,6 +4,7 @@
     padding: 0;
 }
 
+
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -630,7 +631,7 @@ body {
     background-image: url(/static/img/slider.jpg);
     /*padding-left: 98px;*/
     padding-left: 78px;
-    padding-right: 211px;
+    padding-right: 200px;
     position: relative;
 }
 
@@ -783,7 +784,7 @@ body {
 .navi {
     position: absolute;
     bottom: 22px;
-    right: 618px;
+    right: 45%;
     display: flex;
     width: 130px;
     height: 40px;
@@ -1217,6 +1218,8 @@ body {
 
 .footer form {
     position: relative;
+    left: 600px;
+    bottom: 100px;
 }
 
 .footer form a i {
@@ -1401,7 +1404,7 @@ td:first-child {
 
 .location-1 {
     height: 368px;
-    width: 368px;
+    width: 348px;
     border: 1px solid #9c9c9c;
     margin: 71px 28px 122px 0px;
     float: left;
@@ -1598,7 +1601,6 @@ td:first-child {
 }
 
 .details-products {
-    padding-left: 98px;
     padding-right: 98px;
     margin-top: 98px;
     /*height: 651px; */
@@ -1619,13 +1621,14 @@ td:first-child {
 
 .slider-product img {
     width: 100%;
+    height: 120%;
 }
 
 .slider-control {
     width: 420px;
     height: 70px;
     margin: 11px auto 0px;
-    padding-left: 150px
+    padding-left: 100px
 }
 
 .slider-control .block {
@@ -1651,9 +1654,8 @@ td:first-child {
 }
 
 .description {
-    width: 535px;
+    width: 310px;
     float: right;
-    padding-left: 35px
 }
 
 .description .big-bold {
@@ -1697,7 +1699,7 @@ td:first-child {
 .red-button {
     display: block;
     height: 71px;
-    width: 510px;
+    width: 305px;
     border-radius: 35px;
     background-color: #f44336;
     text-align: center;
@@ -1810,5 +1812,15 @@ td:first-child {
 }
 
 .related-products a:hover .text {
+    display: block;
+}
+
+.my-dropdown-menu{
+    display: none;
+    position: absolute;
+    padding-top: 20px;
+}
+
+.dropdown:hover .my-dropdown-menu{
     display: block;
 }
