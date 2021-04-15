@@ -128,9 +128,7 @@ ubuntu-drivers-common==0.0.0
 ufw==0.36
 unattended-upgrades==0.1
 urllib3==1.26.4
-<<<<<<< HEAD
 psycopg2-binary
-=======
 user-agent==0.1.9
 virtualenv==20.0.17
 wadllib==1.3.3
@@ -140,4 +138,4 @@ wrapt==1.12.1
 xkit==0.0.0
 youtube-dl==2020.3.24
 zipp==1.0.0
->>>>>>> 433be06cd94f00847b68969362f80883f16b2477
+
