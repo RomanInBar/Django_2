@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'template_profiler_panel',
-]
+    'django_extensions',
 
 AUTH_USER_MODEL = "Userapp.ShopUser"
 
@@ -169,6 +169,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = "/media/"
 

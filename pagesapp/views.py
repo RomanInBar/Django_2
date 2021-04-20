@@ -12,7 +12,7 @@ from .models import Contact, Product, ProductCategory
 
 def main(request):
     title = "главная"
-    products = Product.objects.filter(is_active=True, category__is_active=True)[:3]
+    products = Product.objects.filter(is_active=True, category__is_active=True).select_related('category')[:3]
     content = {"title": title, "products": products, "media_url": settings.MEDIA_URL}
     return render(request, "pagesapp/index.html", content)
 
@@ -93,3 +93,8 @@ def contact(request):
     locations = Contact.objects.all()
     content = {"title": title, "visit_date": visit_date, "locations": locations}
     return render(request, "pagesapp/contact.html", content)
+
+def load_from_json(file_name):
+   with open(os.path.join(JSON_PATH, file_name + '.json'), 'r',\
+             errors='ignore') as infile:
+       return json.load(infile)

@@ -8,6 +8,8 @@ from django.dispatch import receiver
 from django.db.models.signals import pre_save, pre_delete
 from django.views.generic.detail import DetailView
 from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 from basketapp.models import Basket
 from ordersapp.forms import OrderItemForm
@@ -21,6 +23,9 @@ class OrderList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
 
+    @method_decorator(login_required())
+    def dispath(self, *args, **kwargs):
+        return super(ListView, self).dispatch(*args, **kwargs)
 
 class OrderItemsCreate(LoginRequiredMixin, CreateView):
    model = Order
@@ -68,6 +73,9 @@ class OrderItemsCreate(LoginRequiredMixin, CreateView):
 
        return super(OrderItemsCreate, self).form_valid(form)
 
+    @method_decorator(login_required())
+    def dispath(self, *args, **kwargs):
+        return super(CreateView, self).dispatch(*args, **kwargs)
 
 
 class OrderItemsUpdate(LoginRequiredMixin, UpdateView):
@@ -88,7 +96,8 @@ class OrderItemsUpdate(LoginRequiredMixin, UpdateView):
             data['orderitems'] = OrderFormSet(
                 self.request.POST, instance=self.object)
         else:
-            formset = OrderFormSet(instance=self.object)
+            queryset = self.object.orderitems.select_related()
+            formset = OrderFormSet(instance=self.object, queryset=queryset)
           
             for form in formset.forms:
                 if form.instance.pk:
@@ -111,6 +120,9 @@ class OrderItemsUpdate(LoginRequiredMixin, UpdateView):
 
         return super(OrderItemsUpdate, self).form_valid(form)
 
+    @method_decorator(login_required())
+    def dispath(self, *args, **kwargs):
+        return super(UpdateView, self).dispatch(*args, **kwargs)
 
 class OrderDelete(LoginRequiredMixin, DeleteView):
     model = Order
