@@ -27,14 +27,16 @@ class OrderList(LoginRequiredMixin, ListView):
     def dispath(self, *args, **kwargs):
         return super(ListView, self).dispatch(*args, **kwargs)
 
+
 class OrderItemsCreate(LoginRequiredMixin, CreateView):
    model = Order
    fields = []
    success_url = reverse_lazy('ordersapp:orders_list')
 
+
    def get_context_data(self, **kwargs):
        data = super(OrderItemsCreate, self).get_context_data(**kwargs)
-       OrderFormSet = inlineformset_factory(Order, OrderItem, \
+       OrderFormSet = inlineformset_factory(Order, OrderItem,
                                             form=OrderItemForm, extra=1)
 
        if self.request.POST:
@@ -42,7 +44,7 @@ class OrderItemsCreate(LoginRequiredMixin, CreateView):
        else:
            basket_items = Basket.objects.filter(user=self.request.user)
            if len(basket_items):
-               OrderFormSet = inlineformset_factory(Order, OrderItem, \
+               OrderFormSet = inlineformset_factory(Order, OrderItem,
                                   form=OrderItemForm, extra=len(basket_items))
                formset = OrderFormSet()
                for num, form in enumerate(formset.forms):
@@ -73,8 +75,8 @@ class OrderItemsCreate(LoginRequiredMixin, CreateView):
 
        return super(OrderItemsCreate, self).form_valid(form)
 
-    @method_decorator(login_required())
-    def dispath(self, *args, **kwargs):
+   @method_decorator(login_required())
+   def dispath(self, *args, **kwargs):
         return super(CreateView, self).dispatch(*args, **kwargs)
 
 

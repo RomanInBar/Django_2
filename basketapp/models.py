@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.db.models.signals import pre_delete, pre_save
 from django.dispatch import receiver
+from django.utils.functional import cached_property
 
 from pagesapp.models import Product
 
@@ -12,6 +13,9 @@ class Basket(models.Model):
     quantity = models.PositiveIntegerField(verbose_name="количество", default=0)
     add_datetime = models.DateTimeField(verbose_name="время добавления", auto_now_add=True)
 
+    @cached_property
+    def get_item_cached(self):
+        return self.user.basket.select_related()
 
     @property
     def product_cost(self):
@@ -19,13 +23,13 @@ class Basket(models.Model):
 
     @property
     def total_quantity(self):
-        _items = Basket.objects.filter(user=self.user)
+        _items = get_item_cached
         _totalquantity = sum(list(map(lambda x: x.quantity, _items)))
         return _totalquantity
 
     @property
     def total_cost(self):
-        _items = Basket.objects.filter(user=self.user)
+        _items = get_item_cached
         _totalcost = sum(list(map(lambda x: x.product_cost, _items)))
         return _totalcost
 
